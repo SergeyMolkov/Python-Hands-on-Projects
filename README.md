@@ -9,7 +9,7 @@ Applied Machine Learning and Python projects completed as part of the **Applied 
 ```
 Python-Hands-on-Projects/
 │
-├── ml-tasks/
+├── classic-ml-tasks/
 │   ├── Preprocessing_SimpleImputer.ipynb
 │   ├── Preprocessing_IterativeImputer.ipynb
 │   ├── Covid-19_data_analysis.ipynb
@@ -27,7 +27,7 @@ Python-Hands-on-Projects/
 
 ## 🗂️ Projects
 
-### 🤖 ML Tasks
+### 🤖 Classic ML Tasks
 
 | File                                      | Description                                   | Key Techniques                                           |
 | ----------------------------------------- | --------------------------------------------- | -------------------------------------------------------- |
