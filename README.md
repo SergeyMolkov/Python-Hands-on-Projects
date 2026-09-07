@@ -19,6 +19,15 @@ Python-Hands-on-Projects/
 │   ├── Customer_classification__ensemble_ML_.py
 │   └── Penguin_species_classification.ipynb
 │
+├── text-picture-video-sound/
+│   ├── Text2Voice_AudioBook.ipynb
+│   ├── Text_Summarization.ipynb
+│   ├── Picture_Object_Extraction_from_Background.ipynb
+│   ├── Picture_Object_Extraction_Kittens.jpg
+│   ├── Video_Cartoon_Filter.ipynb
+│   ├── Video_Cartoon_Filter_Mickey_face.png
+│   └── Video_Thief_Detector.ipynb
+│
 └── web-scraping/
     └── Web_Scraping.py
 ```
@@ -42,6 +51,25 @@ Python-Hands-on-Projects/
 
 ---
 
+### 🎬 Text, Picture, Video & Sound
+
+| File                                          | Description                                        | Key Techniques                                                                  |
+| --------------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `Text2Voice_AudioBook`                      | Turns a PDF book into a narrated MP3 audiobook     | `PyPDF2`, regex text cleaning, `pyttsx3` (SAPI5 TTS)                        |
+| `Text_Summarization`                        | Extractive summarization of a Medium article       | Selenium +`BeautifulSoup`, `sumy` (TextRank, LexRank, Luhn, LSA), `summa` |
+| `Picture_Object_Extraction_from_Background` | Foreground extraction via thresholding             | Simple / Otsu / Adaptive thresholding, morphological ops, contours              |
+| `Video_Cartoon_Filter`                      | Live webcam filter that masks faces with a cartoon | Haar cascades, alpha-channel overlay,`VideoWriter`                            |
+| `Video_Thief_Detector`                      | Motion-detection alarm for a monitored scene       | Background subtraction (`cv2.absdiff`), contour area filtering                |
+
+**Notes on this section:**
+
+- `Text2Voice_AudioBook` expects a PDF placed in a local `Book/` folder; the cleaning step normalizes typographic quotes and dashes so the synthesized speech pauses naturally. Voice output depends on the SAPI5 voices installed on the machine (Windows).
+- `Text_Summarization` renders the article with Selenium first, since Medium loads body text via JavaScript. Requires Google Chrome.
+- `Picture_Object_Extraction_from_Background` uses `Picture_Object_Extraction_Kittens.jpg`. Conclusion of the experiment: a manually tuned threshold (T=240) beat Otsu on this photo, because the near-white background breaks Otsu's bimodal assumption.
+- `Video_Cartoon_Filter` and `Video_Thief_Detector` both need a working webcam and write their output to `.avi`. The cartoon filter reads `Video_Cartoon_Filter_Mickey_face.png` — swap in any RGBA image to change the mask.
+
+---
+
 ### 🌐 Web Scraping
 
 | File             | Description                    | Key Techniques                     |
@@ -54,7 +82,7 @@ Python-Hands-on-Projects/
 
 ## 🛠️ Tech Stack
 
-`pandas` · `numpy` · `matplotlib` · `seaborn` · `scikit-learn` · `lightgbm` · `selenium`
+`pandas` · `numpy` · `matplotlib` · `seaborn` · `scikit-learn` · `lightgbm` · `selenium` · `opencv-contrib-python` · `PyPDF2` · `pyttsx3` · `sumy` · `summa` · `nltk` · `beautifulsoup4`
 
 ---
 
@@ -68,7 +96,9 @@ pip install -r requirements.txt
 
 > **Notes:**
 >
-> - `Web_Scraping.py` requires Google Chrome installed locally
+> - `Web_Scraping.py` and `Text_Summarization.ipynb` require Google Chrome installed locally
+> - `Video_Cartoon_Filter.ipynb` and `Video_Thief_Detector.ipynb` require a webcam; the cartoon filter also downloads Haar cascade XMLs into a local `cascades/` folder on first run
+> - `Text2Voice_AudioBook.ipynb` requires TTS voices installed in the OS (`pyttsx3` uses SAPI5 on Windows, NSSpeechSynthesizer on macOS, espeak on Linux)
 > - `AutoFeatureSelector_tool.py` requires `fifa19.csv` — available on [Kaggle](https://www.kaggle.com/karangadiya/fifa19)
 > - `RandomForest_hyperparameter_tuning.ipynb` requires `data/2015.csv` — available on [Kaggle](https://www.kaggle.com/cdc/behavioral-risk-factor-surveillance-system)
 
